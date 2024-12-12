@@ -44,6 +44,9 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
 
+      #- name: Terraform Destroy
+      #  run: terraform destroy -auto-approve
+
       - name: Install EBS CSI Driver
         run: |
           aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name ${{ secrets.CLUSTER_NAME }}
