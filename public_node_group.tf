@@ -3,16 +3,16 @@ resource "aws_eks_node_group" "webapp_frontend_node_group" {
   node_group_name = "webapp_frontend_node_group"
   node_role_arn   = aws_iam_role.AmazonEKSNodeRole.arn
   subnet_ids      = [aws_subnet.subnet-public-1.id, aws_subnet.subnet-public-2.id]
-  instance_types  = ["t2.medium"]
+  instance_types  = ["t2.small"]
 
   scaling_config {
-    desired_size = 2
-    max_size     = 5
+    desired_size = 1
+    max_size     = 3
     min_size     = 1
   }
 
   update_config {
-    max_unavailable = 2
+    max_unavailable = 1
   }
     taint { 
       key = "subnet"
